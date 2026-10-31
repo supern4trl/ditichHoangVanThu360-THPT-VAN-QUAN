@@ -1,7 +1,7 @@
 {
     "_ghi_chu_1": "Đây là khối cài đặt mặc định cho toàn bộ Tour",
     "default": {
-        "firstScene": "phong2",
+        "firstScene": "phong1",
         "author": "Team Nghiên cứu khoa học Cô Giang",
         "sceneFadeDuration": 1000,
         "autoLoad": true,
