@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chào mừng đến với Bảo tàng Ảo</title>
+
+    <!-- 1. KẾT NỐI CSS VÀ FONTS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- 2. LỚP PHỦ BẮT ĐẦU (Overlay - Giúp kích hoạt âm thanh khi người dùng click) -->
+    <div id="start-overlay" class="start-overlay">
+        <button id="start-btn" class="start-btn" title="Bắt đầu trải nghiệm">
+            <svg viewBox="0 0 24 24" width="60" height="60" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- 3. THANH ĐIỀU HƯỚNG (Navigation Bar) -->
+    <header class="main-header">
+        <nav class="main-nav">
+            <a href="index.html" class="nav-button">Hệ thống địa điểm</a>
+            <button id="music-btn" class="nav-button">🎵 Nhạc nền: TẮT</button>
+            <button id="toggle-guide-btn" class="nav-button">Tắt Hướng Dẫn</button>
+        </nav>
+    </header>
+
+    <!-- NHẠC NỀN -->
+    <audio id="bg-music" src="audio/background_music.mp3" loop></audio>
+
+    <!-- Bản đồ đã bị xóa theo yêu cầu -->
+
+    <!-- 5. CHỨC NĂNG TRỢ LÝ ẢO (Chatbot & Guide) -->
+
+
+    <!-- 6. NỘI DUNG CHÀO MỪNG (Welcome Screen) -->
+    <div class="welcome-container">
+        <header class="welcome-header">
+            <!-- HS Thay đổi tên bảo tàng ở đây -->
+            <h1 id="welcome-title">BẢO TÀNG ẢO</h1>
+            <p id="welcome-desc">Dự án Khoa học Kỹ thuật - Khám phá không gian ảo</p>
+        </header>
+
+        <main class="welcome-main">
+            <!-- Nút bấm chính để dẫn sang trang Tour 360 -->
+            <a id="welcome-enter-btn" href="tour.html" class="enter-button">VÀO THAM QUAN</a>
+        </main>
+
+        <!-- Phần âm thanh và ảnh dẫn chuyện -->
+        <div id="guide-container" class="guide-container">
+            <img id="guide-gif" src="images/guide.gif" alt="Hướng dẫn viên ảo">
+            <audio id="guide-audio" src="audio/welcome.mp3"></audio>
+        </div>
+    </div>
+
+    <!-- 7. CÁC FILE JAVASCRIPT ĐIỀU KHIỂN -->
+    <script src="script_welcome.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

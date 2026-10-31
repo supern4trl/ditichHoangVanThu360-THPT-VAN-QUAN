@@ -1,0 +1,205 @@
+{
+    "_ghi_chu_1": "Đây là khối cài đặt mặc định cho toàn bộ Tour",
+    "default": {
+        "firstScene": "phong1",
+        "author": "Team Nghiên cứu khoa học Cô Giang",
+        "sceneFadeDuration": 1000,
+        "autoLoad": true,
+        "hotSpotDebug": false
+    },
+    "_ghi_chu_2": "Dưới đây là danh sách các phòng (Scenes)",
+    "scenes": {
+        "phong1": {
+            "_ghi_chu_3": "phong1",
+            "title": "Gian chính",
+            "mapImage": "images/map-local/phong6.jpg",
+            "panorama": "images/panorama/phong6.jpg",
+            "hotSpots": [
+                {
+                    "type": "scene",
+                    "pitch": -3.61,
+                    "yaw": 17.01,
+                    "sceneId": "phong2",
+                    "cssClass": "pnlm-hotspot-arrow-up"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -13.74,
+                    "yaw": 58.49,
+                    "artifactId": "ns-gc-1"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -3.42,
+                    "yaw": 31.24,
+                    "artifactId": "ns-gb-9"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.9,
+                    "yaw": -25.7,
+                    "artifactId": "ns-gb-9"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -11.08,
+                    "yaw": 85.36,
+                    "artifactId": "ns-gc-3"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -12.55,
+                    "yaw": 102.99,
+                    "artifactId": "ns-gc-2"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 7.03,
+                    "yaw": 92.06,
+                    "artifactId": "ns-gc-4"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 6.41,
+                    "yaw": -99.59,
+                    "artifactId": "ns-gc-5"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 7.05,
+                    "yaw": -86.66,
+                    "artifactId": "ns-gc-6"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -10.93,
+                    "yaw": -85.68,
+                    "artifactId": "ns-gc-7"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 5.09,
+                    "yaw": -65.92,
+                    "artifactId": "ns-gc-8"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.87,
+                    "yaw": -53.76,
+                    "artifactId": "ns-gc-9"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.87,
+                    "yaw": -50.07,
+                    "artifactId": "ns-gc-10"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.87,
+                    "yaw": -46.31,
+                    "artifactId": "ns-gc-11"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.87,
+                    "yaw": -42.17,
+                    "artifactId": "ns-gc-12"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 10.17,
+                    "yaw": -50.08,
+                    "artifactId": "ns-gc-13"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 10.17,
+                    "yaw": -45.97,
+                    "artifactId": "ns-gc-14"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -6.71,
+                    "yaw": -51.04,
+                    "artifactId": "ns-gc-16"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 10.72,
+                    "yaw": 17.94,
+                    "artifactId": "ns-gc-15"
+                }
+            ]
+        },
+        "phong2": {
+            "_ghi_chu_3": "phong2",
+            "title": "Gian bếp",
+            "mapImage": "images/map-local/phong7.jpg",
+            "panorama": "images/panorama/phong7.jpg",
+            "hotSpots": [
+                {
+                    "type": "scene",
+                    "pitch": -14.07,
+                    "yaw": -135.31,
+                    "sceneId": "phong1",
+                    "cssClass": "pnlm-hotspot-arrow-up"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -36.73,
+                    "yaw": -76.82,
+                    "artifactId": "ns-gb-1"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -31.62,
+                    "yaw": 158.31,
+                    "artifactId": "ns-gb-7"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -3.04,
+                    "yaw": -42.44,
+                    "artifactId": "ns-gb-9"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -39.35,
+                    "yaw": -17.56,
+                    "artifactId": "ns-gb-3"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -30.16,
+                    "yaw": -23.58,
+                    "artifactId": "ns-gb-8"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -21.75,
+                    "yaw": 126.2,
+                    "artifactId": "ns-gb-5"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.29,
+                    "yaw": 74.12,
+                    "artifactId": "ns-gb-6"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -6.16,
+                    "yaw": -9.19,
+                    "artifactId": "ns-gb-4"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -19.19,
+                    "yaw": 76.79,
+                    "artifactId": "ns-gb-2"
+                }
+            ]
+        }
+    }
+}

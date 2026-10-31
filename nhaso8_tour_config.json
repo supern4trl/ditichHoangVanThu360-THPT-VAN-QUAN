@@ -1,0 +1,355 @@
+{
+    "_ghi_chu_1": "Đây là khối cài đặt mặc định cho toàn bộ Tour",
+    "default": {
+        "firstScene": "phong2",
+        "author": "Team Nghiên cứu khoa học Cô Giang",
+        "sceneFadeDuration": 1000,
+        "autoLoad": true,
+        "hotSpotDebug": false
+    },
+    "_ghi_chu_2": "Dưới đây là danh sách các phòng (Scenes)",
+    "scenes": {
+        "phong1": {
+            "_ghi_chu_3": "phong1",
+            "title": "Tầng 1",
+            "mapImage": "images/map-local/phong8.jpg",
+            "panorama": "images/panorama/phong8.jpg",
+            "hotSpots": [
+                {
+                    "type": "scene",
+                    "pitch": 1.99,
+                    "yaw": 14.23,
+                    "sceneId": "phong2",
+                    "cssClass": "pnlm-hotspot-arrow-up"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 6.08,
+                    "yaw": 20.93,
+                    "artifactId": "ns8-t1-32"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -0.95,
+                    "yaw": 25.96,
+                    "artifactId": "ns8-t1-33"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -17.1,
+                    "yaw": 49.84,
+                    "artifactId": "ns8-t1-34"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -21.31,
+                    "yaw": 123.13,
+                    "artifactId": "ns8-t1-35"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.48,
+                    "yaw": 32.89,
+                    "artifactId": "ns8-t1-36"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 8.36,
+                    "yaw": 32.54,
+                    "artifactId": "ns8-t1-37"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 1.17,
+                    "yaw": 40.11,
+                    "artifactId": "ns8-t1-38"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 10.34,
+                    "yaw": 39.42,
+                    "artifactId": "ns8-t1-1"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.95,
+                    "yaw": 49.55,
+                    "artifactId": "ns8-t1-2"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 12.1,
+                    "yaw": 48.6,
+                    "artifactId": "ns8-t1-3"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 1.76,
+                    "yaw": 61.39,
+                    "artifactId": "ns8-t1-4"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 15.03,
+                    "yaw": 61.75,
+                    "artifactId": "ns8-t1-5"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.32,
+                    "yaw": 80.43,
+                    "artifactId": "ns8-t1-6"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 18.41,
+                    "yaw": 79.77,
+                    "artifactId": "ns8-t1-7"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 4.1,
+                    "yaw": 101.78,
+                    "artifactId": "ns8-t1-8"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 19.63,
+                    "yaw": 101.1,
+                    "artifactId": "ns8-t1-9"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 3.92,
+                    "yaw": 120.79,
+                    "artifactId": "ns8-t1-10"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 17.68,
+                    "yaw": 120.31,
+                    "artifactId": "ns8-t1-11"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 4.69,
+                    "yaw": 134.23,
+                    "artifactId": "ns8-t1-12"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 15.75,
+                    "yaw": 134.38,
+                    "artifactId": "ns8-t1-13"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -14.32,
+                    "yaw": -131.43,
+                    "artifactId": "ns8-t1-14"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.77,
+                    "yaw": -123.67,
+                    "artifactId": "ns8-t1-15"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 12.7,
+                    "yaw": -123.18,
+                    "artifactId": "ns8-t1-16"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.5,
+                    "yaw": -109.95,
+                    "artifactId": "ns8-t1-17"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 15.14,
+                    "yaw": -108.84,
+                    "artifactId": "ns8-t1-18"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 1.77,
+                    "yaw": -93.66,
+                    "artifactId": "ns8-t1-19"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 14.43,
+                    "yaw": -93.07,
+                    "artifactId": "ns8-t1-20"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.76,
+                    "yaw": -76.39,
+                    "artifactId": "ns8-t1-21"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 13.21,
+                    "yaw": -75.81,
+                    "artifactId": "ns8-t1-22"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.25,
+                    "yaw": -61.27,
+                    "artifactId": "ns8-t1-23"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 11.29,
+                    "yaw": -61.92,
+                    "artifactId": "ns8-t1-24"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -0.31,
+                    "yaw": -49.67,
+                    "artifactId": "ns8-t1-25"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 9.97,
+                    "yaw": -49.66,
+                    "artifactId": "ns8-t1-26"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.19,
+                    "yaw": -39.75,
+                    "artifactId": "ns8-t1-27"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 8.18,
+                    "yaw": -40.03,
+                    "artifactId": "ns8-t1-28"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -0.88,
+                    "yaw": -33.15,
+                    "artifactId": "ns8-t1-29"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 6.75,
+                    "yaw": -33.21,
+                    "artifactId": "ns8-t1-30"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -19.03,
+                    "yaw": -60.9,
+                    "artifactId": "ns8-t1-31"
+                }
+            ]
+        },
+        "phong2": {
+            "_ghi_chu_3": "phong2",
+            "title": "Tầng 2",
+            "mapImage": "images/map-local/phong9.jpg",
+            "panorama": "images/panorama/phong9.jpg",
+            "hotSpots": [
+                {
+                    "type": "scene",
+                    "pitch": -26.63,
+                    "yaw": 103.59,
+                    "sceneId": "phong1",
+                    "cssClass": "pnlm-hotspot-arrow-down"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -16.78,
+                    "yaw": 27.19,
+                    "artifactId": "ns8-t2-1"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -12.27,
+                    "yaw": -41.78,
+                    "artifactId": "ns8-t2-2"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.11,
+                    "yaw": 34.52,
+                    "artifactId": "ns8-t2-3"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 10.03,
+                    "yaw": 35.53,
+                    "artifactId": "ns8-t2-4"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 11.08,
+                    "yaw": 23.38,
+                    "artifactId": "ns8-t2-5"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 1.05,
+                    "yaw": 23.46,
+                    "artifactId": "ns8-t2-6"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 1.84,
+                    "yaw": 11.87,
+                    "artifactId": "ns8-t2-7"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 13.67,
+                    "yaw": 3.89,
+                    "artifactId": "ns8-t2-8"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.06,
+                    "yaw": -0.41,
+                    "artifactId": "ns8-t2-9"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.9,
+                    "yaw": -12.92,
+                    "artifactId": "ns8-t2-10"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 13.63,
+                    "yaw": -22.76,
+                    "artifactId": "ns8-t2-11"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.7,
+                    "yaw": -24.91,
+                    "artifactId": "ns8-t2-12"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.19,
+                    "yaw": -35.94,
+                    "artifactId": "ns8-t2-13"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 13.17,
+                    "yaw": -45.13,
+                    "artifactId": "ns8-t2-14"
+                }
+            ]
+        }
+    }
+}

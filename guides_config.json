@@ -1,0 +1,14 @@
+{
+    "tuyen_quang": {
+        "welcome": {
+            "audio": "audio/welcome.mp3",
+            "image": "images/guide.gif"
+        },
+        "scenes": {
+            "phong1": {
+                "audio": "audio/thuyetminhphong1.mp3",
+                "image": "images/guide.gif"
+            }
+        }
+    }
+}

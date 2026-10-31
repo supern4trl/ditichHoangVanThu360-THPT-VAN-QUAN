@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảo Tàng 360</title>
+
+    <!-- CSS CHUNG -->
+    <link rel="stylesheet" href="pannellum/pannellum.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS khung hiện vật: đặt SAU style.css để ghi đè -->
+    <link rel="stylesheet" href="artifact-modal.css">
+
+    <!-- FONTS (dùng cho trang chọn địa điểm) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS riêng cho trang Portal */
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            align-content: start;
+        }
+
+        .museum-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .museum-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .card-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            color: #ffeb3b;
+            /* Màu vàng nhấn */
+        }
+
+        .card-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .portal-container {
+            box-sizing: border-box;
+            height: auto;
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            padding-top: 100px;
+            /* Chừa chỗ cho header */
+            padding-bottom: 60px;
+            /* Chừa khoảng trống cuối trang khi lướt xuống */
+        }
+
+        .portal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .portal-header h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            margin: 0;
+        }
+
+        /* Cho phép lướt xuống trang chọn địa điểm khi có nhiều địa điểm
+           (chỉ áp dụng cho portal, tour 360 không bị ảnh hưởng) */
+        html.portal-page,
+        body.portal-page {
+            height: auto !important;
+            min-height: 100%;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            position: static !important;
+        }
+
+        /* CHỈ ĐIỀU CHỈNH TRÊN ĐIỆN THOẠI: hiển thị 2 địa điểm mỗi hàng.
+           Giao diện máy tính giữ nguyên CSS hiện có. */
+        @media (max-width: 600px) {
+            .portal-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+                padding: 16px 12px;
+            }
+
+            .museum-card {
+                min-width: 0;
+                border-radius: 12px;
+            }
+
+            .card-image {
+                height: 110px;
+            }
+
+            .card-content {
+                padding: 10px;
+                overflow-wrap: anywhere;
+            }
+
+            .card-content h3 {
+                font-size: 1rem;
+                line-height: 1.3;
+                margin-bottom: 6px;
+            }
+
+            .card-content p {
+                font-size: 0.78rem;
+                line-height: 1.4;
+            }
+
+            .portal-header {
+                padding: 0 12px;
+                margin-bottom: 12px;
+            }
+
+            .portal-header h1 {
+                font-size: 1.65rem;
+                line-height: 1.25;
+            }
+
+            .portal-container {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         CÁCH HOẠT ĐỘNG CỦA TRANG GHÉP NÀY
+         - Mở index.html            -> hiện TRANG CHỌN ĐỊA ĐIỂM (portal)
+         - Mở index.html?m=ten_id   -> hiện TOUR 360 (có khung hiện vật)
+         Hai giao diện nằm trong 2 <template> bên dưới, chỉ giao diện
+         nào cần dùng mới được đưa vào trang (tránh trùng id).
+         ===================================================== -->
+
+    <!-- ================= GIAO DIỆN 1: TRANG CHỌN ĐỊA ĐIỂM ================= -->
+    <template id="view-portal">
+        <!-- THANH ĐIỀU HƯỚNG (Navigation Bar) -->
+        <header class="main-header">
+            <nav class="main-nav">
+                <a href="index.html" class="nav-button active">Trang chủ</a>
+                <button id="music-btn" class="nav-button">🎵 Nhạc nền: BẬT</button>
+            </nav>
+        </header>
+
+        <!-- NHẠC NỀN -->
+        <audio id="bg-music" src="audio/background_music.mp3" loop></audio>
+
+        <div class="portal-container">
+            <div class="portal-header">
+                <h1>HỆ THỐNG KHÁM PHÁ ẢO</h1>
+                <p>Chọn một địa điểm để bắt đầu hành trình của bạn</p>
+            </div>
+
+            <div id="museum-list" class="portal-grid">
+                <!-- Danh sách bảo tàng sẽ được nạp tự động bởi script -->
+                <p>Đang tải danh sách địa điểm...</p>
+            </div>
+        </div>
+    </template>
+
+    <!-- ================= GIAO DIỆN 2: TOUR 360 ================= -->
+    <template id="view-tour">
+        <header class="main-header">
+            <nav class="main-nav">
+                <a href="index.html" class="nav-button">Hệ thống địa điểm</a>
+                <button id="music-btn" class="nav-button">🎵 Nhạc nền: BẬT</button>
+                <button id="guide-toggle-btn" class="nav-button">Tắt Hướng dẫn</button>
+            </nav>
+        </header>
+
+        <!-- Thẻ chứa nhạc nền (Loop = tự động lặp lại) -->
+        <audio id="bg-music" src="audio/background_music.mp3" loop></audio>
+
+        <button id="chatbot-btn" class="chatbot-btn" title="Trò chuyện với trợ lý ảo"></button>
+        <div id="panorama-container"></div>
+
+        <!-- KHUNG HIỆN VẬT (tự căn chỉnh nhờ artifact-modal.css + artifact-modal.js) -->
+        <div id="artifact-modal" class="modal-overlay hidden">
+            <div class="modal-content artifact-modal-content">
+                <button id="close-artifact-btn" class="modal-close-btn">×</button>
+                <div class="artifact-info">
+                    <div class="artifact-image-container">
+                        <img id="artifact-image" src="" alt="Hình ảnh hiện vật">
+                        <p id="artifact-caption" class="artifact-caption"></p>
+                        <div id="thumbnail-gallery" class="thumbnail-container"></div>
+                    </div>
+                    <div class="artifact-text-container">
+                        <h2 id="artifact-name"></h2>
+                        <p id="artifact-period"></p>
+                        <p id="artifact-description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KHUNG HƯỚNG DẪN VIÊN ẢO -->
+        <div id="guide-container" class="guide-container hidden">
+            <img id="guide-gif" src="images/guide.gif" alt="Hướng dẫn viên ảo">
+            <audio id="guide-audio"></audio>
+        </div>
+
+        <!-- ARTIFACT EDITOR - Công cụ lấy tọa độ đặt hiện vật -->
+        <button id="artifact-editor-open" class="dev-tool-open" title="Mở Artifact Editor">🛠️</button>
+        <div id="artifact-editor" class="dev-tool">
+            <div class="dev-tool-header">
+                🛠️ Artifact Editor
+                <button id="artifact-editor-toggle" title="Ẩn Artifact Editor">✕</button>
+            </div>
+            <div class="dev-tool-row">
+                <span class="dev-tool-label">Tọa độ:</span>
+                <span id="coords-text">Alt+Click vào ảnh 360</span>
+            </div>
+            <div class="dev-tool-row">
+                <span class="dev-tool-label">Loại:</span>
+                <select id="hotspot-type-select">
+                    <option value="artifact">Hiện vật (artifact)</option>
+                    <option value="scene">Chuyển cảnh (scene)</option>
+                </select>
+            </div>
+            <!-- Artifact fields -->
+            <div id="artifact-fields" class="dev-tool-row">
+                <span class="dev-tool-label">Hiện vật:</span>
+                <select id="artifact-id-select">
+                    <option value="">-- Chọn hiện vật --</option>
+                </select>
+            </div>
+            <!-- Scene fields -->
+            <div id="scene-fields" style="display:none">
+                <div class="dev-tool-row">
+                    <span class="dev-tool-label">Scene đích:</span>
+                    <select id="scene-id-select">
+                        <option value="">-- Chọn scene --</option>
+                    </select>
+                </div>
+                <div class="dev-tool-row">
+                    <span class="dev-tool-label">Mũi tên:</span>
+                    <select id="scene-arrow-select">
+                        <option value="pnlm-hotspot-arrow-up">↑ Lên / Tiến</option>
+                        <option value="pnlm-hotspot-arrow-down">↓ Xuống / Lùi</option>
+                        <option value="pnlm-hotspot-arrow-left">← Trái</option>
+                        <option value="pnlm-hotspot-arrow-right">→ Phải</option>
+                        <option value="pnlm-hotspot-special">✨ Đặc biệt (Vàng lấp lánh)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="dev-tool-row" style="border-top: 1px solid #444; padding-top: 10px; margin-top: 10px;">
+                <span class="dev-tool-label">Góc hiện tại:</span>
+                <span id="current-view-text">pitch: 0, yaw: 0</span>
+            </div>
+            <div class="dev-tool-row">
+                <button id="get-current-view-btn">🎥 Lấy góc xuất phát</button>
+            </div>
+            <div class="dev-tool-row" style="border-top: 1px solid #444; padding-top: 10px; margin-top: 10px;">
+                <button id="copy-json-btn">📋 Copy JSON Hotspot</button>
+                <span id="copy-json-status"></span>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        // =========================================================
+        // BỘ CHỌN GIAO DIỆN
+        // =========================================================
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            // Có ?m=... (hoặc ?tour=1) -> vào tour; không có -> trang chọn địa điểm
+            var isTour = params.has('m') || params.has('tour');
+
+            var tpl = document.getElementById(isTour ? 'view-tour' : 'view-portal');
+            document.body.appendChild(tpl.content.cloneNode(true));
+
+            // Chỉ trang portal mới cho lướt xuống; tour 360 giữ nguyên
+            if (!isTour) {
+                document.documentElement.classList.add('portal-page');
+                document.body.classList.add('portal-page');
+            }
+
+            if (isTour) {
+                startTour();
+            } else {
+                startPortal();
+            }
+
+            // ---------- TOUR: nạp lần lượt các script (đúng thứ tự cũ) ----------
+            function startTour() {
+                var files = [
+                    'pannellum/pannellum.js',
+                    'artifact-modal.js',   // phải TRƯỚC script_tour.js
+                    'script_tour.js',
+                    'main.js'
+                ];
+                (function next(i) {
+                    if (i >= files.length) return;
+                    var s = document.createElement('script');
+                    s.src = files[i];
+                    s.onload = function () { next(i + 1); };
+                    s.onerror = function () {
+                        console.error('Không nạp được ' + files[i]);
+                        next(i + 1);
+                    };
+                    document.body.appendChild(s);
+                })(0);
+            }
+
+            // ---------- PORTAL: script gốc của trang chọn địa điểm ----------
+            function startPortal() {
+                async function loadLocations() {
+                    var listContainer = document.getElementById('museum-list');
+                    try {
+                        var response = await fetch('locations.json');
+                        var locations = await response.json();
+
+                        // Nếu chỉ có 1 địa điểm -> vào thẳng trang chào mừng của nó
+                        if (locations.length === 1) {
+                            window.location.href = 'welcome.html?m=' + locations[0].id;
+                            return;
+                        }
+
+                        listContainer.innerHTML = ''; // Xóa thông báo đang tải
+
+                        locations.forEach(function (loc) {
+                            var card = document.createElement('a');
+                            // Dẫn về trang chào mừng của địa điểm đó
+                            card.href = 'welcome.html?m=' + loc.id;
+                            card.className = 'museum-card';
+
+                            card.innerHTML =
+                                '<div class="card-image" style="background-image: url(\'' + (loc.thumbnail || 'images/background.jpg') + '\')"></div>' +
+                                '<div class="card-content">' +
+                                '<h3>' + loc.name + '</h3>' +
+                                '<p>' + loc.description + '</p>' +
+                                '</div>';
+
+                            listContainer.appendChild(card);
+                        });
+                    } catch (error) {
+                        console.error('Lỗi nạp danh sách địa điểm:', error);
+                        listContainer.innerHTML = '<p>Không thể tải danh sách. Vui lòng kiểm tra file locations.json</p>';
+                    }
+                }
+                loadLocations();
+
+                // Logic điều khiển nhạc nền
+                var music = document.getElementById('bg-music');
+                var musicBtn = document.getElementById('music-btn');
+                music.volume = 0.3;
+
+                musicBtn.addEventListener('click', function () {
+                    if (music.paused) {
+                        music.play();
+                        musicBtn.textContent = '🎵 Nhạc nền: BẬT';
+                        sessionStorage.setItem('bgMusicPlaying', '1');
+                    } else {
+                        music.pause();
+                        musicBtn.textContent = '🎵 Nhạc nền: TẮT';
+                        sessionStorage.setItem('bgMusicPlaying', '0');
+                    }
+                });
+
+                if (sessionStorage.getItem('bgMusicPlaying') === '1') {
+                    music.play();
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>

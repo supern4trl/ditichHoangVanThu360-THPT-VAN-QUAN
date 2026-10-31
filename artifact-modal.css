@@ -1,0 +1,242 @@
+/* =========================================================
+   KHUNG HIỆN VẬT - TỰ CĂN CHỈNH THEO MỌI KÍCH THƯỚC MÀN HÌNH
+   Dán vào CUỐI style.css (hoặc <link> sau style.css) để ghi đè.
+   ========================================================= */
+
+/* ---------- Lớp phủ ---------- */
+#artifact-modal.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(8px, 2vmin, 24px);
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+/* Giữ hiệu ứng zoom/mờ của style.css: ẩn bằng visibility thay vì display:none */
+#artifact-modal.modal-overlay {
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+#artifact-modal.hidden {
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* ---------- Khung chính: co giãn theo màn hình ---------- */
+#artifact-modal .artifact-modal-content {
+    position: relative;
+    box-sizing: border-box;
+    width: min(1100px, 100%);
+    max-height: 100%;
+    max-height: 100dvh;
+    max-height: calc(100dvh - 2 * clamp(8px, 2vmin, 24px));
+    overflow: hidden;
+    /* cuộn nằm ở các vùng bên trong */
+    display: flex;
+    flex-direction: column;
+    padding: clamp(12px, 2.5vmin, 28px);
+    border-radius: clamp(8px, 1.5vmin, 16px);
+    background: #ffffff;
+    color: #222222;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    font-size: clamp(13px, 1.6vmin + 6px, 17px);
+    line-height: 1.5;
+}
+
+/* ---------- Nút đóng ---------- */
+#artifact-modal .modal-close-btn {
+    position: absolute;
+    top: clamp(4px, 1vmin, 12px);
+    right: clamp(4px, 1vmin, 12px);
+    z-index: 2;
+    width: clamp(30px, 5vmin, 42px);
+    height: clamp(30px, 5vmin, 42px);
+    border: none;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #444444;
+    font-size: clamp(18px, 3vmin, 26px);
+    line-height: 1;
+    cursor: pointer;
+}
+
+#artifact-modal .modal-close-btn:hover {
+    background: #d32f2f;
+    color: #ffffff;
+}
+
+/* ---------- Bố cục: ảnh | chữ ---------- */
+#artifact-modal .artifact-info {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(12px, 2.5vmin, 28px);
+    min-height: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+    padding-top: clamp(20px, 4vmin, 30px);
+    /* chừa chỗ cho nút đóng */
+}
+
+/* ---------- Cột ảnh ---------- */
+#artifact-modal .artifact-image-container {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1.2vmin, 12px);
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+#artifact-modal #artifact-image {
+    display: block;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    /* ảnh ngang/dọc đều không méo */
+    border-radius: 8px;
+    background: #f4f4f4;
+}
+
+#artifact-modal .artifact-caption {
+    flex: 0 0 auto;
+    margin: 0;
+    font-size: 0.85em;
+    font-style: italic;
+    text-align: center;
+    color: #666666;
+    overflow-wrap: anywhere;
+    max-height: 4.5em;
+    overflow-y: auto;
+}
+
+/* ---------- Dãy ảnh nhỏ: cuộn ngang, không tràn ---------- */
+#artifact-modal .thumbnail-container {
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: clamp(4px, 1vmin, 10px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+}
+
+#artifact-modal .thumbnail-container:empty {
+    display: none;
+}
+
+#artifact-modal .thumbnail-container img {
+    flex: 0 0 auto;
+    width: clamp(44px, 9vmin, 76px);
+    height: clamp(44px, 9vmin, 76px);
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+#artifact-modal .thumbnail-container img:hover,
+#artifact-modal .thumbnail-container img.active {
+    opacity: 1;
+    border-color: #1976d2;
+}
+
+/* ---------- Cột chữ: cuộn dọc khi dài ---------- */
+#artifact-modal .artifact-text-container {
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 6px;
+    overflow-wrap: anywhere;
+    /* từ dài cũng tự xuống dòng */
+    word-break: break-word;
+    hyphens: auto;
+    scrollbar-width: thin;
+}
+
+#artifact-modal #artifact-name {
+    margin: 0 0 0.4em;
+    font-size: clamp(18px, 3.2vmin + 4px, 30px);
+    line-height: 1.25;
+    color: #b71c1c;
+}
+
+#artifact-modal #artifact-period {
+    margin: 0 0 0.8em;
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #555555;
+    font-style: italic;
+}
+
+#artifact-modal #artifact-description {
+    margin: 0;
+    font-size: 1em;
+    color: #222222;
+    text-align: justify;
+    white-space: pre-line;
+    /* giữ xuống dòng \n trong mô tả */
+}
+
+/* =========================================================
+   MÀN HÌNH DỌC (điện thoại dọc, tablet dọc): xếp ảnh trên, chữ dưới
+   ========================================================= */
+@media (orientation: portrait),
+(max-width: 760px) {
+    #artifact-modal .artifact-info {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: minmax(0, 45%) minmax(0, 1fr);
+    }
+
+    #artifact-modal #artifact-description {
+        text-align: left;
+    }
+}
+
+/* =========================================================
+   MÀN HÌNH NGANG THẤP (điện thoại xoay ngang): gọn lại, 2 cột
+   ========================================================= */
+@media (orientation: landscape) and (max-height: 520px) {
+    #artifact-modal .artifact-modal-content {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    #artifact-modal .artifact-info {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-rows: minmax(0, 1fr);
+        gap: 12px;
+        padding-top: 4px;
+    }
+
+    #artifact-modal #artifact-name {
+        font-size: 16px;
+    }
+
+    #artifact-modal .artifact-caption {
+        display: none;
+    }
+
+    #artifact-modal .thumbnail-container img {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* =========================================================
+   MÀN HÌNH RỘNG LỚN / TV: cho khung to hơn
+   ========================================================= */
+@media (min-width: 1600px) and (min-height: 900px) {
+    #artifact-modal .artifact-modal-content {
+        width: min(1400px, 100%);
+    }
+}

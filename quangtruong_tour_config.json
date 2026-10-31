@@ -1,0 +1,39 @@
+{
+    "_ghi_chu_1": "Đây là khối cài đặt mặc định cho toàn bộ Tour",
+    "default": {
+        "firstScene": "phong1",
+        "author": "Team Nghiên cứu khoa học Cô Giang",
+        "sceneFadeDuration": 1000,
+        "autoLoad": true,
+        "hotSpotDebug": false
+    },
+    "_ghi_chu_2": "Dưới đây là danh sách các phòng (Scenes)",
+    "scenes": {
+        "phong1": {
+            "_ghi_chu_3": "phong1",
+            "title": "Tầng 1",
+            "mapImage": "images/map-local/phong10.jpg",
+            "panorama": "images/panorama/phong10.jpg",
+            "hotSpots": [
+                {
+                    "type": "artifact",
+                    "pitch": 5.35,
+                    "yaw": -81.27,
+                    "artifactId": "qt-1"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 11.06,
+                    "yaw": -0.05,
+                    "artifactId": "qt-2"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 4.77,
+                    "yaw": 81.51,
+                    "artifactId": "qt-3"
+                }
+            ]
+        }
+    }
+}

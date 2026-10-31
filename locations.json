@@ -1,0 +1,30 @@
+[
+    {
+        "id": "nhaluuniem",
+        "name": "Nhà lưu niệm đồng chí Hoàng Văn Thụ",
+        "description": "Hành trình về nguồn, khám phá dấu ấn lịch sử tại Nhà lưu niệm đồng chí Hoàng Văn Thụ.",
+        "url": "tour.html",
+        "thumbnail": "images/nhaluuniem.jpg"
+    },
+    {
+        "id": "nhasan",
+        "name": "Nhà sàn đồng chí Hoàng Văn Thụ",
+        "description": "Di tích lịch sử và hoạt động Cách mạng của đồng Chí Hoàng Văn Thụ.",
+        "url": "nhasan.html",
+        "thumbnail": "images/nhasan.jpg"
+    },
+    {
+        "id": "nhaso8",
+        "name": "Di tích Nhà số 8 phố Chính Cai",
+        "description": "Dấu ấn hoạt động cách mạng của đồng chí Hoàng Văn Thụ tại Nhà số 8 phố Chính Cai.",
+        "url": "nhaso8.html",
+        "thumbnail": "images/nhaso8.jpg"
+    },
+    {
+        "id": "quangtruong",
+        "name": "Quảng Trường Hoàng Văn Thụ",
+        "description": "Khám phá Quảng trường Hoàng Văn Thụ, địa điểm mang ý nghĩa lịch sử và văn hóa của Lạng Sơn.",
+        "url": "quangtruong.html",
+        "thumbnail": "images/quangtruong.jpg"
+    }
+]

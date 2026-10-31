@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảo Tàng 360</title>
+    <link rel="stylesheet" href="pannellum/pannellum.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+       <header class="main-header">
+        <nav class="main-nav">
+            <a href="index.html" class="nav-button">Hệ thống địa điểm</a>
+            <button id="music-btn" class="nav-button">🎵 Nhạc nền: BẬT</button>
+            <button id="guide-toggle-btn" class="nav-button">Tắt Hướng dẫn</button>
+        </nav>
+    </header>
+
+    <!-- Thẻ chứa nhạc nền (Loop = tự động lặp lại) -->
+    <audio id="bg-music" src="audio/background_music.mp3" loop></audio>
+
+    <!-- Bản đồ đã bị xóa theo yêu cầu -->
+
+    <button id="chatbot-btn" class="chatbot-btn" title="Trò chuyện với trợ lý ảo"></button>
+    <div id="panorama-container"></div>
+
+    <div id="artifact-modal" class="modal-overlay hidden">
+        <div class="modal-content artifact-modal-content">
+            <button id="close-artifact-btn" class="modal-close-btn">×</button>
+            <div class="artifact-info">
+                <div class="artifact-image-container">
+                    <img id="artifact-image" src="" alt="Hình ảnh hiện vật">
+                    <p id="artifact-caption" class="artifact-caption"></p>
+                    <div id="thumbnail-gallery" class="thumbnail-container"></div>
+                </div>
+                <div class="artifact-text-container">
+                    <h2 id="artifact-name"></h2>
+                    <p id="artifact-period"></p>
+                    <p id="artifact-description"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KHUNG HƯỚNG DẪN VIÊN ẢO (MỚI) -->
+    <div id="guide-container" class="guide-container hidden">
+        <img id="guide-gif" src="images/guide.gif" alt="Hướng dẫn viên ảo">
+        <audio id="guide-audio"></audio> <!-- Sẽ tự động nạp file từ tour_config.json -->
+    </div>
+
+    <!-- ARTIFACT EDITOR - Công cụ lấy tọa độ đặt hiện vật -->
+    <button id="artifact-editor-open" class="dev-tool-open" title="Mở Artifact Editor">🛠️</button>
+    <div id="artifact-editor" class="dev-tool">
+        <div class="dev-tool-header">
+            🛠️ Artifact Editor
+            <button id="artifact-editor-toggle" title="Ẩn Artifact Editor">✕</button>
+        </div>
+        <div class="dev-tool-row">
+            <span class="dev-tool-label">Tọa độ:</span>
+            <span id="coords-text">Alt+Click vào ảnh 360</span>
+        </div>
+        <div class="dev-tool-row">
+            <span class="dev-tool-label">Loại:</span>
+            <select id="hotspot-type-select">
+                <option value="artifact">Hiện vật (artifact)</option>
+                <option value="scene">Chuyển cảnh (scene)</option>
+            </select>
+        </div>
+        <!-- Artifact fields -->
+        <div id="artifact-fields" class="dev-tool-row">
+            <span class="dev-tool-label">Hiện vật:</span>
+            <select id="artifact-id-select">
+                <option value="">-- Chọn hiện vật --</option>
+            </select>
+        </div>
+        <!-- Scene fields -->
+        <div id="scene-fields" style="display:none">
+            <div class="dev-tool-row">
+                <span class="dev-tool-label">Scene đích:</span>
+                <select id="scene-id-select">
+                    <option value="">-- Chọn scene --</option>
+                </select>
+            </div>
+            <div class="dev-tool-row">
+                <span class="dev-tool-label">Mũi tên:</span>
+                <select id="scene-arrow-select">
+                    <option value="pnlm-hotspot-arrow-up">↑ Lên / Tiến</option>
+                    <option value="pnlm-hotspot-arrow-down">↓ Xuống / Lùi</option>
+                    <option value="pnlm-hotspot-arrow-left">← Trái</option>
+                    <option value="pnlm-hotspot-arrow-right">→ Phải</option>
+                    <option value="pnlm-hotspot-special">✨ Đặc biệt (Vàng lấp lánh)</option>
+                </select>
+            </div>
+        </div>
+        <div class="dev-tool-row" style="border-top: 1px solid #444; padding-top: 10px; margin-top: 10px;">
+            <span class="dev-tool-label">Góc hiện tại:</span>
+            <span id="current-view-text">pitch: 0, yaw: 0</span>
+        </div>
+        <div class="dev-tool-row">
+            <button id="get-current-view-btn">🎥 Lấy góc xuất phát</button>
+        </div>
+        <div class="dev-tool-row" style="border-top: 1px solid #444; padding-top: 10px; margin-top: 10px;">
+            <button id="copy-json-btn">📋 Copy JSON Hotspot</button>
+            <span id="copy-json-status"></span>
+        </div>
+    </div>
+
+    <script src="pannellum/pannellum.js"></script>
+    <script src="script_tour.js"></script>
+    <script src="main.js"></script>
+   
+</body>
+</html>

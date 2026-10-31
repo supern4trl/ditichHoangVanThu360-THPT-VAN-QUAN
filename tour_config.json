@@ -1,0 +1,403 @@
+{
+    "_ghi_chu_1": "Đây là khối cài đặt mặc định cho toàn bộ Tour",
+    "default": {
+        "firstScene": "phong1",
+        "author": "Team Nghiên cứu khoa học Cô Giang",
+        "sceneFadeDuration": 1000,
+        "autoLoad": true,
+        "hotSpotDebug": false
+    },
+    "_ghi_chu_2": "Dưới đây là danh sách các phòng (Scenes)",
+    "scenes": {
+        "phong1": {
+            "_ghi_chu_3": "phong1",
+            "title": "Cổng chào",
+            "mapImage": "images/map-local/phong1.jpg",
+            "panorama": "images/panorama/phong1.jpg",
+            "hotSpots": [
+                {
+                    "type": "scene",
+                    "pitch": -0.57,
+                    "yaw": 57.13,
+                    "sceneId": "phong5",
+                    "cssClass": "pnlm-hotspot-arrow-left"
+                }
+            ]
+        },
+        "phong5": {
+            "_ghi_chu_3": "phong5",
+            "title": "Sân Chính",
+            "mapImage": "images/map-local/phong5.jpg",
+            "panorama": "images/panorama/phong5.jpg",
+            "hotSpots": [
+                {
+                    "type": "scene",
+                    "pitch": 11.04,
+                    "yaw": -3.35,
+                    "sceneId": "phong2",
+                    "cssClass": "pnlm-hotspot-arrow-up"
+                },
+                {
+                    "type": "scene",
+                    "pitch": -7.41,
+                    "yaw": 175.16,
+                    "sceneId": "phong1",
+                    "cssClass": "pnlm-hotspot-arrow-up"
+                }
+            ]
+        },
+        "phong2": {
+            "_ghi_chu_3": "phong2",
+            "title": "Giữa Phòng",
+            "mapImage": "images/map-local/phong2.jpg",
+            "panorama": "images/panorama/phong2.jpg",
+            "hotSpots": [
+                {
+                    "type": "scene",
+                    "pitch": -6.16,
+                    "yaw": -61.64,
+                    "sceneId": "phong3",
+                    "cssClass": "pnlm-hotspot-arrow-left"
+                },
+                {
+                    "type": "scene",
+                    "pitch": -6.16,
+                    "yaw": 41.15,
+                    "sceneId": "phong4",
+                    "cssClass": "pnlm-hotspot-arrow-right"
+                },
+                {
+                    "type": "scene",
+                    "pitch": -7.41,
+                    "yaw": 175.16,
+                    "sceneId": "phong5",
+                    "cssClass": "pnlm-hotspot-arrow-up"
+                }
+            ]
+        },
+        "phong3": {
+            "_ghi_chu_3": "phong3",
+            "title": "Bên Trái",
+            "mapImage": "images/map-local/phong3.jpg",
+            "panorama": "images/panorama/phong3.jpg",
+            "hotSpots": [
+                {
+                    "type": "scene",
+                    "pitch": -26.48,
+                    "yaw": -141.37,
+                    "sceneId": "phong2",
+                    "cssClass": "pnlm-hotspot-arrow-right"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -4.04,
+                    "yaw": -68.63,
+                    "artifactId": "c1"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -16.01,
+                    "yaw": -50.34,
+                    "artifactId": "c10"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -4.74,
+                    "yaw": -62.02,
+                    "artifactId": "c2"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.54,
+                    "yaw": -61.21,
+                    "artifactId": "c4"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -4.54,
+                    "yaw": -54.9,
+                    "artifactId": "c3"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -3.45,
+                    "yaw": -50.13,
+                    "artifactId": "c6"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.19,
+                    "yaw": -48.26,
+                    "artifactId": "c5"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -3.63,
+                    "yaw": -45.6,
+                    "artifactId": "c7"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -5.06,
+                    "yaw": -15.98,
+                    "artifactId": "c8"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 1.08,
+                    "yaw": -16.59,
+                    "artifactId": "c9"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -5.11,
+                    "yaw": 16.47,
+                    "artifactId": "t-p2-1"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 1.82,
+                    "yaw": 46.51,
+                    "artifactId": "t-p2-2"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -4.51,
+                    "yaw": 46.41,
+                    "artifactId": "t-p2-3"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.18,
+                    "yaw": 51.68,
+                    "artifactId": "t-p2-4"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -4.46,
+                    "yaw": 51.99,
+                    "artifactId": "t-p2-5"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.62,
+                    "yaw": 55.91,
+                    "artifactId": "t-p2-6"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -4.59,
+                    "yaw": 56.16,
+                    "artifactId": "t-p2-7"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.48,
+                    "yaw": 65.35,
+                    "artifactId": "t-p2-8"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -4.82,
+                    "yaw": 64.17,
+                    "artifactId": "t-p2-9"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.55,
+                    "yaw": 73.82,
+                    "artifactId": "t-p2-10"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.74,
+                    "yaw": 85.02,
+                    "artifactId": "t-p2-11"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -2.42,
+                    "yaw": 97.61,
+                    "artifactId": "t-p2-12"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -16.88,
+                    "yaw": 52.01,
+                    "artifactId": "t-p2-T"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 4.98,
+                    "yaw": 16.67,
+                    "artifactId": "t-p2-15"
+                }
+            ]
+        },
+        "phong4": {
+            "_ghi_chu_3": "phong4",
+            "title": "Bên Phải",
+            "mapImage": "images/map-local/phong4.jpg",
+            "panorama": "images/panorama/phong4.jpg",
+            "hotSpots": [
+                {
+                    "type": "scene",
+                    "pitch": -20.76,
+                    "yaw": 150.18,
+                    "sceneId": "phong2",
+                    "cssClass": "pnlm-hotspot-arrow-left"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -11.64,
+                    "yaw": -50.68,
+                    "artifactId": "p-p2-1"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.03,
+                    "yaw": -92.59,
+                    "artifactId": "p-p2-2"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.33,
+                    "yaw": -80.42,
+                    "artifactId": "p-p2-3"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 0.22,
+                    "yaw": -69.9,
+                    "artifactId": "p-p2-4"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.92,
+                    "yaw": -62.4,
+                    "artifactId": "p-p2-6"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 3.13,
+                    "yaw": -62.47,
+                    "artifactId": "p-p2-5"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.55,
+                    "yaw": -57.84,
+                    "artifactId": "p-p2-8"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 3.05,
+                    "yaw": -58.06,
+                    "artifactId": "p-p2-7"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 3.02,
+                    "yaw": -52.77,
+                    "artifactId": "p-p2-9"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.85,
+                    "yaw": -52.72,
+                    "artifactId": "p-p2-10"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.21,
+                    "yaw": -48.03,
+                    "artifactId": "p-p2-12"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 3.89,
+                    "yaw": -48.16,
+                    "artifactId": "p-p2-11"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 7.12,
+                    "yaw": -21.77,
+                    "artifactId": "p-p1-13"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.05,
+                    "yaw": -21.53,
+                    "artifactId": "p-p1-14"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 6.45,
+                    "yaw": 6,
+                    "artifactId": "p-p1-1"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -4.86,
+                    "yaw": 5.89,
+                    "artifactId": "p-p1-2"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 2.65,
+                    "yaw": 39.75,
+                    "artifactId": "p-p1-5"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 3.52,
+                    "yaw": 35.08,
+                    "artifactId": "p-p1-3"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -2.28,
+                    "yaw": 34.88,
+                    "artifactId": "p-p1-4"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -2.11,
+                    "yaw": 39.94,
+                    "artifactId": "p-p1-6"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -1.79,
+                    "yaw": 46.39,
+                    "artifactId": "p-p1-7"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -2.85,
+                    "yaw": 51.78,
+                    "artifactId": "p-p1-8"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -3.55,
+                    "yaw": 60.06,
+                    "artifactId": "p-p1-10"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": 1.72,
+                    "yaw": 59.95,
+                    "artifactId": "p-p1-9"
+                },
+                {
+                    "type": "artifact",
+                    "pitch": -14.25,
+                    "yaw": 36.57,
+                    "artifactId": "p-p2-T"
+                }
+            ]
+        }
+    }
+}

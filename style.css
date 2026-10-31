@@ -1,0 +1,1136 @@
+/* Thêm đoạn này vào đầu file style.css */
+html,
+body {
+    margin: 0;
+    /* Xóa lề mặc định của trình duyệt */
+    padding: 0;
+    /* Xóa đệm mặc định của trình duyệt */
+    overflow: hidden;
+    /* Ẩn thanh cuộn nếu có */
+    height: 100%;
+    /* Đảm bảo body cao 100% */
+    width: 100%;
+    /* Đảm bảo body rộng 100% */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+/* Định dạng cho khung chứa ảnh 360 */
+#panorama-container {
+    width: 100vw;
+    /* Chiếm 90% chiều rộng của cửa sổ xem */
+    height: 100vh;
+    /* Chiếm 80% chiều cao của cửa sổ xem */
+    margin: 20px auto;
+    /* Căn giữa */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* --- CSS chung --- */
+body {
+    font-family: 'Nunito', sans-serif;
+    /* Font chữ tròn, thân thiện */
+    margin: 0;
+    color: #333;
+}
+
+/* --- CSS cho Trang chủ (index.html) --- */
+.welcome-container {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.welcome-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.welcome-header p {
+    font-size: 1.2rem;
+    font-style: italic;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.enter-button {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 35px;
+    background-color: #4CAF50;
+    /* Màu xanh lá cây thân thiện */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    /* Bo tròn mềm mại */
+    border: 2px solid white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.enter-button:hover {
+    transform: scale(1.05);
+    background-color: #45a049;
+}
+
+/* --- CSS cho Hướng dẫn viên ảo --- */
+.guide-container {
+    position: fixed;
+    bottom: 5px;
+    right: 20px;
+    width: 200px;
+    /* Điều chỉnh kích thước của GIF */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.guide-container img {
+    width: 100%;
+}
+
+.toggle-guide-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Class để ẩn/hiện hướng dẫn viên */
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    /* Không cho phép click khi đã ẩn */
+}
+
+/* --- (Bạn giữ lại CSS cho trang tour 360 ở đây) --- */
+/* Ví dụ: */
+#panorama-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* --- MỚI: CSS cho Lớp phủ Bắt đầu --- */
+.start-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Nền đen mờ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Luôn nằm trên cùng */
+    transition: opacity 0.5s ease;
+}
+
+.start-btn {
+    background-color: #4CAF50;
+    border: 3px solid white;
+    border-radius: 50%;
+    /* Nút tròn */
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: transform 0.2s ease;
+}
+
+.start-btn:hover {
+    transform: scale(1.1);
+}
+
+.start-btn svg {
+    margin-left: 8px;
+    /* Căn chỉnh icon play cho đẹp */
+}
+
+/* Class để ẩn lớp phủ đi sau khi click */
+.start-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    /* Không cho click xuyên qua */
+}
+
+/* --- 1. HEADER HIỆN ĐẠI --- */
+.main-header {
+    position: fixed;
+    /* Luôn hiển thị */
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Căn giữa tuyệt đối */
+    z-index: 100;
+    /* Nằm trên các nội dung khác */
+    background-color: rgba(45, 108, 223, 0.95);
+    /* Nền thanh công cụ - đã đổi thành xanh dương */
+    border-radius: 50px;
+    padding: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    /* Hiệu ứng kính mờ cho đẹp */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.main-nav {
+    display: flex;
+    gap: 8px;
+    /* Khoảng cách giữa các nút */
+}
+
+.nav-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- 2. KHUNG BẢN ĐỒ (MODAL) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #888;
+    cursor: pointer;
+}
+
+.map-container {
+    border-radius: 10px;
+    overflow: hidden;
+    /* Bo tròn cả iframe bên trong */
+}
+
+
+/* --- 3. DÀNH CHO CÁC THÀNH PHẦN KHÁC --- */
+.guide-container {
+    position: fixed;
+    bottom: 5px;
+    right: 20px;
+    width: 250px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+
+/* --- 5. MŨI TÊN ĐIỀU HƯỚNG (CUSTOM HOTSPOT) --- */
+.arrow-hotspot {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    border: 2px solid white;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    /* Dùng伪元素để vẽ mũi tên */
+    position: relative;
+}
+
+.arrow-hotspot:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.arrow-hotspot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-top: 3px solid white;
+    border-right: 3px solid white;
+    transform: translate(-75%, -50%) rotate(45deg);
+}
+
+/* Ẩn icon + mặc định của Pannellum */
+.pnlm-hotspot.pnlm-info,
+.pnlm-hotspot.pnlm-scene {
+    background-image: none !important;
+}
+
+/* CSS cho tooltip của hotspot */
+.pnlm-tooltip {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 5px !important;
+}
+
+
+/* Hotspot mũi tên chung (chuyển cảnh) */
+.pnlm-hotspot-arrow {
+    width: 60px;
+    height: 60px;
+    background-image: url('images/arrow_forward.png');
+    /* Mũi tên tiến tới */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.pnlm-hotspot-arrow:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* CSS cho hotspot thông tin mặc định (hiện vật) */
+.pnlm-info-hotspot {
+    background-color: #fff !important;
+    /* Màu trắng */
+    border: 2px solid #333 !important;
+    /* Viền đen */
+    border-radius: 50% !important;
+    /* Hình tròn */
+    width: 25px !important;
+    height: 25px !important;
+    transition: transform 0.2s ease !important;
+}
+
+.pnlm-info-hotspot:hover {
+    transform: scale(1.2) !important;
+}
+
+/* CSS cho hotspot ra ngoài (chỉ thay đổi icon) */
+.pnlm-hotspot-arrow-up {
+    /* Đảm bảo hình dạng của nó giống hotspot thông tin */
+    background-color: #fff !important;
+    border-radius: 50% !important;
+    width: 35px !important;
+    height: 35px !important;
+
+    /* Ghi đè bằng hình mũi tên */
+    background-image: url('images/arrow_up.png') !important;
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.pnlm-hotspot-arrow-down {
+    /* Đảm bảo hình dạng của nó giống hotspot thông tin */
+    background-color: #fff !important;
+    border-radius: 50% !important;
+    width: 35px !important;
+    height: 35px !important;
+
+    /* Ghi đè bằng hình mũi tên */
+    background-image: url('images/arrow_down.png') !important;
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.pnlm-hotspot-arrow-left {
+    /* Đảm bảo hình dạng của nó giống hotspot thông tin */
+    background-color: #fff !important;
+    border-radius: 50% !important;
+    width: 25px !important;
+    height: 25px !important;
+
+    /* Ghi đè bằng hình mũi tên */
+    background-image: url('images/arrow_left.png') !important;
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.pnlm-hotspot-arrow-right {
+    /* Đảm bảo hình dạng của nó giống hotspot thông tin */
+    background-color: #fff !important;
+    border-radius: 50% !important;
+    width: 25px !important;
+    height: 25px !important;
+
+    /* Ghi đè bằng hình mũi tên */
+    background-image: url('images/arrow_right.png') !important;
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+/* Icon chuyển phòng đặc biệt */
+.pnlm-hotspot-special {
+    background-color: #ffeb3b !important;
+    /* Màu vàng nổi bật */
+    border: 3px solid #f44336 !important;
+    /* Viền đỏ */
+    border-radius: 50% !important;
+    width: 45px !important;
+    height: 45px !important;
+
+    /* Hình ảnh icon đặc biệt */
+    background-image: url('images/special_icon.png') !important;
+    background-size: 80% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+
+    /* Hiệu ứng lấp lánh để thu hút sự chú ý */
+    box-shadow: 0 0 15px rgba(255, 235, 59, 0.8) !important;
+    animation: special-pulsate 2s infinite !important;
+    cursor: pointer;
+}
+
+@keyframes special-pulsate {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 235, 59, 0.6);
+    }
+
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 25px rgba(255, 235, 59, 1);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 235, 59, 0.6);
+    }
+}
+
+.pulsating-hotspot {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+
+    /* DÒNG ĐƯỢC SỬA: BỎ !important ở đây */
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.4);
+
+    animation: pulsate 1.5s ease-out infinite !important;
+}
+
+/* Định nghĩa animation */
+@keyframes pulsate {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+
+    100% {
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+    }
+}
+
+/* --- CSS CHO MODAL HIỆN VẬT --- */
+
+/* Ghi đè để modal có thể nhỏ hơn */
+.artifact-modal-content {
+    width: 80%;
+    max-width: 900px;
+    /* Tăng chiều rộng tối đa */
+    transform: scale(0);
+    /* Trạng thái ban đầu: co lại = 0 */
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+    /* Hiệu ứng zoom đàn hồi */
+}
+
+/* Khi modal được hiện, nó sẽ zoom ra */
+.modal-overlay:not(.hidden) .artifact-modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.artifact-info {
+    display: flex;
+    gap: 25px;
+}
+
+.artifact-image-container {
+    flex: 1;
+    /* Chiếm 1/2 không gian */
+}
+
+#artifact-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.artifact-text-container {
+    flex: 1;
+    /* Chiếm 1/2 không gian */
+    text-align: left;
+}
+
+#artifact-name {
+    margin-top: 0;
+    font-size: 2rem;
+    color: #000;
+}
+
+#artifact-period {
+    font-style: italic;
+    color: #555;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+#artifact-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    white-space: pre-wrap;
+}
+
+.artifact-caption {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    margin: 4px 0 0;
+    min-height: 1.2em;
+}
+
+/* ===== RESPONSIVE - MOBILE ===== */
+@media (max-width: 768px) {
+
+    /* --- Trang chủ --- */
+    .welcome-header h1 {
+        font-size: 2rem;
+        padding: 0 15px;
+    }
+
+    .welcome-header p {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .enter-button {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+
+    /* --- Header / Nav --- */
+    .main-header {
+        top: 10px;
+        width: calc(100% - 20px);
+        left: 10px;
+        transform: none;
+        border-radius: 12px;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    .main-nav {
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: center;
+    }
+
+    .nav-button {
+        font-size: 0.8rem;
+        padding: 7px 12px;
+    }
+
+    /* --- Modal (Bản đồ & Hiện vật) --- */
+    .modal-content {
+        width: 92%;
+        padding: 20px 15px;
+        box-sizing: border-box;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* --- Modal hiện vật --- */
+    .artifact-info {
+        flex-direction: column;
+    }
+
+    #artifact-name {
+        font-size: 1.5rem;
+    }
+
+    #artifact-description {
+        font-size: 0.95rem;
+    }
+
+    .thumbnail-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* --- Hướng dẫn viên ảo --- */
+    .guide-container {
+        width: 120px;
+        bottom: 70px;
+        right: 10px;
+    }
+
+    .toggle-guide-btn {
+        bottom: 15px;
+        left: 10px;
+        font-size: 0.8rem;
+        padding: 7px 12px;
+    }
+
+    /* --- Tên phòng phía dưới (pnlm-title-box) --- */
+    .pnlm-title-box {
+        white-space: normal !important;
+        font-size: 0.85rem !important;
+        padding: 8px 15px !important;
+        max-width: 80vw !important;
+        text-align: center !important;
+    }
+
+    /* --- Dev Tool (ẩn trên mobile) --- */
+    .dev-tool,
+    .dev-tool-open {
+        display: none !important;
+    }
+}
+
+.pnlm-title-box {
+    /* --- 1. Vị trí --- */
+    position: fixed !important;
+    top: auto !important;
+    bottom: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+
+    /* THÊM DÒNG NÀY ĐỂ CHỮ KHÔNG BỊ XUỐNG DÒNG */
+    white-space: nowrap !important;
+
+    /* --- 2. Phong cách --- */
+    background-color: rgba(10, 255, 79, 0.5) !important;
+    border-radius: 12px !important;
+    padding: 12px 25px !important;
+    font-size: 1.1rem !important;
+    font-family: 'Nunito', sans-serif !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- 6. CÔNG CỤ BIÊN TẬP (EDITOR TOOL) --- */
+.dev-tool {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9rem;
+    z-index: 2000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 320px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.dev-tool h4 {
+    margin: 0 0 5px 0;
+    color: #4CAF50;
+    font-size: 1rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.dev-tool select,
+.dev-tool input {
+    background: #222;
+    color: #eee;
+    border: 1px solid #444;
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.dev-tool .coords-info {
+    background: #111;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #00ff00;
+    white-space: pre-wrap;
+    border: 1px dashed #333;
+}
+
+.dev-tool .btn-group {
+    display: flex;
+    gap: 8px;
+}
+
+.dev-tool button {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+#copy-coords-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#copy-coords-btn:hover {
+    background-color: #45a049;
+}
+
+#clear-coords-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.dev-tool .hint {
+    font-size: 0.75rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Nút ✕ đóng panel (nằm trong header) */
+.dev-tool-header button {
+    margin-left: auto;
+    background: transparent;
+    color: #aaa;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 2px;
+    line-height: 1;
+}
+
+.dev-tool-header button:hover {
+    color: white;
+}
+
+/* Nút 🛠️ mở lại panel (góc màn hình) */
+.dev-tool-open {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 2001;
+    display: none;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dev-tool-open:hover {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: #4CAF50;
+}
+
+.dev-tool-header {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #4CAF50;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 8px;
+}
+
+.dev-tool-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dev-tool-label {
+    color: #aaa;
+    white-space: nowrap;
+    font-size: 0.8rem;
+}
+
+.dev-tool-row select {
+    flex: 1;
+    background: #222;
+    color: #eee;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 0.8rem;
+}
+
+.dev-tool-row button {
+    padding: 6px 12px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.dev-tool-row button:hover {
+    background: #45a049;
+}
+
+#copy-json-status {
+    font-size: 0.8rem;
+    color: #4CAF50;
+}
+
+/* --- CSS CHO GALLERY ẢNH TRONG MODAL --- */
+
+.thumbnail-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    /* Cho phép xuống dòng nếu có quá nhiều ảnh */
+}
+
+.thumbnail-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    /* Đảm bảo ảnh không bị méo */
+    border-radius: 8px;
+    border: 3px solid transparent;
+    /* Viền trong suốt ban đầu */
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+}
+
+.thumbnail-img:hover {
+    opacity: 1;
+}
+
+/* Định dạng cho thumbnail đang được chọn */
+.thumbnail-img.active {
+    opacity: 1;
+    border-color: #007bff;
+    /* Viền màu xanh để làm nổi bật */
+}
+
+/* =========================================================
+   KHUNG HIỆN VẬT - TỰ CĂN CHỈNH THEO MỌI KÍCH THƯỚC MÀN HÌNH
+   Dán vào CUỐI style.css (hoặc <link> sau style.css) để ghi đè.
+   ========================================================= */
+
+/* ---------- Lớp phủ ---------- */
+#artifact-modal.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(8px, 2vmin, 24px);
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+/* Giữ hiệu ứng zoom/mờ của style.css: ẩn bằng visibility thay vì display:none */
+#artifact-modal.modal-overlay {
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+#artifact-modal.hidden {
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* ---------- Khung chính: co giãn theo màn hình ---------- */
+#artifact-modal .artifact-modal-content {
+    position: relative;
+    box-sizing: border-box;
+    width: min(1100px, 100%);
+    max-height: 100%;
+    max-height: 100dvh;
+    max-height: calc(100dvh - 2 * clamp(8px, 2vmin, 24px));
+    overflow: hidden;
+    /* cuộn nằm ở các vùng bên trong */
+    display: flex;
+    flex-direction: column;
+    padding: clamp(12px, 2.5vmin, 28px);
+    border-radius: clamp(8px, 1.5vmin, 16px);
+    background: #ffffff;
+    color: #222222;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    font-size: clamp(13px, 1.6vmin + 6px, 17px);
+    line-height: 1.5;
+}
+
+/* ---------- Nút đóng ---------- */
+#artifact-modal .modal-close-btn {
+    position: absolute;
+    top: clamp(4px, 1vmin, 12px);
+    right: clamp(4px, 1vmin, 12px);
+    z-index: 2;
+    width: clamp(30px, 5vmin, 42px);
+    height: clamp(30px, 5vmin, 42px);
+    border: none;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #444444;
+    font-size: clamp(18px, 3vmin, 26px);
+    line-height: 1;
+    cursor: pointer;
+}
+
+#artifact-modal .modal-close-btn:hover {
+    background: #d32f2f;
+    color: #ffffff;
+}
+
+/* ---------- Bố cục: ảnh | chữ ---------- */
+#artifact-modal .artifact-info {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(12px, 2.5vmin, 28px);
+    min-height: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+    padding-top: clamp(20px, 4vmin, 30px);
+    /* chừa chỗ cho nút đóng */
+}
+
+/* ---------- Cột ảnh ---------- */
+#artifact-modal .artifact-image-container {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1.2vmin, 12px);
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+#artifact-modal #artifact-image {
+    display: block;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    /* ảnh ngang/dọc đều không méo */
+    border-radius: 8px;
+    background: #f4f4f4;
+}
+
+#artifact-modal .artifact-caption {
+    flex: 0 0 auto;
+    margin: 0;
+    font-size: 0.85em;
+    font-style: italic;
+    text-align: center;
+    color: #666666;
+    overflow-wrap: anywhere;
+    max-height: 4.5em;
+    overflow-y: auto;
+}
+
+/* ---------- Dãy ảnh nhỏ: cuộn ngang, không tràn ---------- */
+#artifact-modal .thumbnail-container {
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: clamp(4px, 1vmin, 10px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+}
+
+#artifact-modal .thumbnail-container:empty {
+    display: none;
+}
+
+#artifact-modal .thumbnail-container img {
+    flex: 0 0 auto;
+    width: clamp(44px, 9vmin, 76px);
+    height: clamp(44px, 9vmin, 76px);
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+#artifact-modal .thumbnail-container img:hover,
+#artifact-modal .thumbnail-container img.active {
+    opacity: 1;
+    border-color: #1976d2;
+}
+
+/* ---------- Cột chữ: cuộn dọc khi dài ---------- */
+#artifact-modal .artifact-text-container {
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 6px;
+    overflow-wrap: anywhere;
+    /* từ dài cũng tự xuống dòng */
+    word-break: break-word;
+    hyphens: auto;
+    scrollbar-width: thin;
+}
+
+#artifact-modal #artifact-name {
+    margin: 0 0 0.4em;
+    font-size: clamp(18px, 3.2vmin + 4px, 30px);
+    line-height: 1.25;
+    color: #b71c1c;
+}
+
+#artifact-modal #artifact-period {
+    margin: 0 0 0.8em;
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #555555;
+    font-style: italic;
+}
+
+#artifact-modal #artifact-description {
+    margin: 0;
+    font-size: 1em;
+    color: #222222;
+    text-align: justify;
+    white-space: pre-line;
+    /* giữ xuống dòng \n trong mô tả */
+}
+
+/* =========================================================
+   MÀN HÌNH DỌC (điện thoại dọc, tablet dọc): xếp ảnh trên, chữ dưới
+   ========================================================= */
+@media (orientation: portrait),
+(max-width: 760px) {
+    #artifact-modal .artifact-info {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: minmax(0, 45%) minmax(0, 1fr);
+    }
+
+    #artifact-modal #artifact-description {
+        text-align: left;
+    }
+}
+
+/* =========================================================
+   MÀN HÌNH NGANG THẤP (điện thoại xoay ngang): gọn lại, 2 cột
+   ========================================================= */
+@media (orientation: landscape) and (max-height: 520px) {
+    #artifact-modal .artifact-modal-content {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    #artifact-modal .artifact-info {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-rows: minmax(0, 1fr);
+        gap: 12px;
+        padding-top: 4px;
+    }
+
+    #artifact-modal #artifact-name {
+        font-size: 16px;
+    }
+
+    #artifact-modal .artifact-caption {
+        display: none;
+    }
+
+    #artifact-modal .thumbnail-container img {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* =========================================================
+   MÀN HÌNH RỘNG LỚN / TV: cho khung to hơn
+   ========================================================= */
+@media (min-width: 1600px) and (min-height: 900px) {
+    #artifact-modal .artifact-modal-content {
+        width: min(1400px, 100%);
+    }
+}
