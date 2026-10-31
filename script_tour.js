@@ -6,7 +6,7 @@
 
 // =================================================================
 // ⚙️ CHẾ ĐỘ PHÁT TRIỂN - Đặt thành false trước khi xuất bản cho học sinh, còn lúc sửa thì đặt là true
-const DEV_MODE = false;
+const DEV_MODE = true;
 // =================================================================
 
 // --- 1. KHAI BÁO BIẾN TOÀN CỤC ---
